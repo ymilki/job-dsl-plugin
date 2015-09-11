@@ -1365,6 +1365,7 @@ class PublisherContext extends AbstractExtensibleContext {
         publisherNodes << new NodeBuilder().'org.jenkinsci.plugins.postbuildscript.PostBuildScript' {
             buildSteps(context.stepContext.stepNodes)
             scriptOnlyIfSuccess(context.onlyIfBuildSucceeds)
+            scriptOnlyIfFailure(context.onlyIfBuildFails)
         }
     }
 

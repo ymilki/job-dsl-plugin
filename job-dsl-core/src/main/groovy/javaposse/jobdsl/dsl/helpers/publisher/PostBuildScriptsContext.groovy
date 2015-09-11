@@ -10,6 +10,7 @@ import javaposse.jobdsl.dsl.helpers.step.StepContext
 class PostBuildScriptsContext implements Context {
     final StepContext stepContext
     boolean onlyIfBuildSucceeds = true
+    boolean onlyIfBuildFails = false
 
     PostBuildScriptsContext(JobManagement jobManagement, Item item) {
         this.stepContext = new StepContext(jobManagement, item)
@@ -27,5 +28,12 @@ class PostBuildScriptsContext implements Context {
      */
     void onlyIfBuildSucceeds(boolean onlyIfBuildSucceeds = true) {
         this.onlyIfBuildSucceeds = onlyIfBuildSucceeds
+    }
+
+    /**
+     * If set, runs the build steps only if the build was a failure. Defaults to {@code false}.
+     */
+    void onlyIfBuildFails(boolean onlyIfBuildFails = false) {
+        this.onlyIfBuildFails = onlyIfBuildFails
     }
 }
